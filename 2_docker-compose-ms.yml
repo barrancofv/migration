@@ -1,0 +1,17 @@
+version: '3.9'
+services: 
+  practica-books_ms:
+    image: practica-books_ms
+    container_name: 'practica-books_ms'
+    restart: on-failure
+    build: 
+      context: ./practica-books_ms
+      dockerfile: ./Dockerfile
+    ports: 
+      - 8081:8081
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
