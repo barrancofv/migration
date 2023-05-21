@@ -55,6 +55,7 @@ public class UserController {
 
 	@GetMapping("/users/")
 	public List<User> getUsers() {
+
 		return users.findAll();
 	}
 

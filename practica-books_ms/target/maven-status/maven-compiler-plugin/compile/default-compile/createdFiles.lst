@@ -1,6 +1,6 @@
 es\codeurjc\mtm\ms\UserMSApplication.class
 es\codeurjc\mtm\ms\controller\UserController.class
 es\codeurjc\mtm\ms\model\User$Basic.class
-es\codeurjc\mtm\ms\service\UserService.class
 es\codeurjc\mtm\ms\model\User.class
+es\codeurjc\mtm\ms\service\UserService.class
 es\codeurjc\mtm\ms\repository\UserRepository.class

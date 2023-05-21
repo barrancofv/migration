@@ -5,6 +5,7 @@ import static org.springframework.web.servlet.support.ServletUriComponentsBuilde
 import java.net.URI;
 import java.util.List;
 
+import es.codeurjc.books.service.user.UserServiceMSImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
@@ -18,19 +19,24 @@ import org.springframework.web.bind.annotation.RestController;
 
 import es.codeurjc.books.model.Comment;
 import es.codeurjc.books.model.User;
-import es.codeurjc.books.service.CommentService;
-import es.codeurjc.books.service.UserService;
+import es.codeurjc.books.service.comment.CommentService;
+import es.codeurjc.books.service.user.UserServiceImpl;
 
 @RestController
 public class UserController {
 
 	@Autowired
-	private UserService users;
+	private UserServiceImpl users;
 
 	@Autowired
 	private CommentService comments;
 
-	public ResponseEntity<?> createUser(@RequestBody User user) {
+	@GetMapping("/users/{id}")
+	public User getUser(@PathVariable long id) {
+		return users.findById(id).orElseThrow();
+	}
+
+	/*public ResponseEntity<?> createUser(@RequestBody User user) {
 
 		try {
 
@@ -60,11 +66,6 @@ public class UserController {
 		return users.findAll();
 	}
 
-	@GetMapping("/users/{id}")
-	public User getUser(@PathVariable long id) {
-		return users.findById(id).orElseThrow();
-	}
-
 	@DeleteMapping("/users/{id}")
 	public ResponseEntity<User> deleteUser(@PathVariable long id) {
 
@@ -77,5 +78,5 @@ public class UserController {
 		} else {
 			return ResponseEntity.status(HttpStatus.PRECONDITION_FAILED).build();
 		}
-	}
+	}*/
 }

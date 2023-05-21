@@ -20,8 +20,8 @@ import com.fasterxml.jackson.annotation.JsonView;
 import es.codeurjc.books.model.Book;
 import es.codeurjc.books.model.Comment;
 import es.codeurjc.books.service.BookService;
-import es.codeurjc.books.service.CommentService;
-import es.codeurjc.books.service.UserService;
+import es.codeurjc.books.service.comment.CommentService;
+import es.codeurjc.books.service.user.UserServiceImpl;
 
 @RestController
 public class CommentController {
@@ -30,7 +30,7 @@ public class CommentController {
 	private CommentService comments;
 
 	@Autowired
-	private UserService users;
+	private UserServiceImpl users;
 
 	@Autowired
 	private BookService books;

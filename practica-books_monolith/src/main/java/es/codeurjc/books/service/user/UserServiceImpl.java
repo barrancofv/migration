@@ -1,16 +1,18 @@
-package es.codeurjc.books.service;
+package es.codeurjc.books.service.user;
 
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Service;
 
 import es.codeurjc.books.model.User;
 import es.codeurjc.books.repository.UserRepository;
 
 @Service
-public class UserService {
+//@ConditionalOnProperty(prefix="app.architecture", value = "USERS_IN_MONOLITH")
+public class UserServiceImpl implements UserService {
 
 	@Autowired
 	private UserRepository users;
