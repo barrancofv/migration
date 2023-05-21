@@ -64,6 +64,11 @@ public class UserController {
 		return users.findById(id).orElseThrow();
 	}
 
+	@GetMapping("/users/nick/{nick}")
+	public User getUserByNick(@PathVariable String nick) {
+		return users.findByNick(nick).orElseThrow();
+	}
+
 	@DeleteMapping("/users/{id}")
 	public ResponseEntity<User> deleteUser(@PathVariable long id) {
 

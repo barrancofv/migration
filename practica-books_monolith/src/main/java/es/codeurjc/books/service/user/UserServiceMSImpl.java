@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,35 +18,45 @@ public class UserServiceMSImpl {
 	@Autowired
 	RestTemplate restTemplate;
 
-	/*public void save(User user) {
-		users.save(user);
+	public void save(User user) {
+		String resourceUrl = "http://localhost:8082/users/";
+		restTemplate.put(resourceUrl, user);
 	}
 
 	public void replace(User updatedUser) {
-		users.findById(updatedUser.getId()).orElseThrow();
-		users.save(updatedUser);
+		String resourceUrl = "http://localhost:8082/users/" + updatedUser.getId();
+		User user = restTemplate.getForObject(resourceUrl, User.class);
+		restTemplate.put(resourceUrl, user);
 	}
 
 	public List<User> findAll() {
-		return users.findAll();
-	}*/
+		String resourceUrl = "http://localhost:8082/users/";
+		User[] response = restTemplate.getForObject(resourceUrl, User[].class);
+		List<User> users = Arrays.asList(response);
+		return users;
+	}
 
 	public Optional<User> findById(long id) {
-
 		String resourceUrl = "http://localhost:8082/users/" + id;
 		User response = restTemplate.getForObject(resourceUrl, User.class);
 		return Optional.ofNullable(response);
 	}
 	
-	/*public boolean existsById(long id) {
-		return users.existsById(id);
+	public boolean existsById(long id) {
+
+		String resourceUrl = "http://localhost:8082/users/" + id;
+		User response = restTemplate.getForObject(resourceUrl, User.class);
+		return response != null ? true : false;
 	}
 
 	public void deleteById(long id) {
-		users.deleteById(id);
+		String resourceUrl = "http://localhost:8082/users/" + id;
+		restTemplate.delete(resourceUrl);
 	}
-
+	
 	public Optional<User> findByNick(String nick) {
-		return users.findByNick(nick);
-	}*/
+		String resourceUrl = "http://localhost:8082/users/nick/" + nick;
+		User response = restTemplate.getForObject(resourceUrl, User.class);
+		return Optional.ofNullable(response);
+	}
 }

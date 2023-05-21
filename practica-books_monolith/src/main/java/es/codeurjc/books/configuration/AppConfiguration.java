@@ -15,6 +15,6 @@ public class AppConfiguration {
 
         return builder.setConnectTimeout(Duration.ofMillis(300000))
                 .setReadTimeout(Duration.ofMillis(300000)).build();
-    }*
+    }
 
 }
