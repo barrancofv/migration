@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-//@ConditionalOnProperty(prefix="app.architecture", value = "USERS_IN_MICROSERVICE")
+@ConditionalOnProperty(prefix="app.architecture", name="model",value = "USERS_IN_MICROSERVICE")
 public class UserServiceMSImpl {
 
 	@Autowired
@@ -53,7 +53,7 @@ public class UserServiceMSImpl {
 		String resourceUrl = "http://localhost:8082/users/" + id;
 		restTemplate.delete(resourceUrl);
 	}
-	
+
 	public Optional<User> findByNick(String nick) {
 		String resourceUrl = "http://localhost:8082/users/nick/" + nick;
 		User response = restTemplate.getForObject(resourceUrl, User.class);

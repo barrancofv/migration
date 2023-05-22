@@ -5,6 +5,7 @@ import static org.springframework.web.servlet.support.ServletUriComponentsBuilde
 import java.net.URI;
 import java.util.List;
 
+import es.codeurjc.books.service.user.UserService;
 import es.codeurjc.books.service.user.UserServiceMSImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -26,7 +27,7 @@ import es.codeurjc.books.service.user.UserServiceImpl;
 public class UserController {
 
 	@Autowired
-	private UserServiceImpl users;
+	private UserService users;
 
 	@Autowired
 	private CommentService comments;
@@ -36,7 +37,7 @@ public class UserController {
 		return users.findById(id).orElseThrow();
 	}
 
-	/*public ResponseEntity<?> createUser(@RequestBody User user) {
+	public ResponseEntity<?> createUser(@RequestBody User user) {
 
 		try {
 
@@ -78,5 +79,5 @@ public class UserController {
 		} else {
 			return ResponseEntity.status(HttpStatus.PRECONDITION_FAILED).build();
 		}
-	}*/
+	}
 }
