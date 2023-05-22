@@ -6,6 +6,7 @@ import java.net.URI;
 import java.util.List;
 import java.util.NoSuchElementException;
 
+import es.codeurjc.books.service.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -30,7 +31,7 @@ public class CommentController {
 	private CommentService comments;
 
 	@Autowired
-	private UserServiceImpl users;
+	private UserService users;
 
 	@Autowired
 	private BookService books;

@@ -27,7 +27,7 @@ WORKDIR /usr/src/app/
 COPY --from=builder /project/target/*.jar /usr/src/app/
 
 # Port
-EXPOSE 8080
+EXPOSE 8081
 
 # Command executed with docker run
 CMD [ "java", "-jar", "practica-books_monolith-0.0.1-SNAPSHOT.jar" ]

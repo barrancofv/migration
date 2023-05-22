@@ -10,8 +10,6 @@ import org.springframework.stereotype.Service;
 import es.codeurjc.books.model.User;
 import es.codeurjc.books.repository.UserRepository;
 
-@Service
-@ConditionalOnProperty(prefix="app.architecture", name="model", value = "USERS_IN_MONOLITH")
 public class UserServiceImpl implements UserService {
 
 	@Autowired
@@ -27,6 +25,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	public List<User> findAll() {
+
 		return users.findAll();
 	}
 

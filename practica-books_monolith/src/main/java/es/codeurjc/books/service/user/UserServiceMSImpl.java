@@ -11,9 +11,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
-@Service
-@ConditionalOnProperty(prefix="app.architecture", name="model",value = "USERS_IN_MICROSERVICE")
-public class UserServiceMSImpl {
+public class UserServiceMSImpl implements UserService {
 
 	@Autowired
 	RestTemplate restTemplate;
